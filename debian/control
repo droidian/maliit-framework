@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Debian Mobile Team <debian-mobile@lists.debian.org>
 Uploaders: Michał Zając <quintasan@kubuntu.org>, Iain Lane <laney@debian.org>
-Build-Depends: cdbs,
+Build-Depends: cmake,
                debhelper (>= 9),
                libdbus-1-dev,
                libglib2.0-dev,
@@ -15,13 +15,12 @@ Build-Depends: cdbs,
                libxcb-xfixes0-dev,
                libxext-dev,
                pkg-config,
-               qt5-default,
                qtbase5-dev (>= 5.2),
                qtbase5-private-dev,
                qtdeclarative5-dev,
-# Test depends
-               xvfb,
-               qml-module-qtquick2
+               qtwayland5-dev-tools,
+               qtwayland5-private-dev,
+               wayland-protocols
 Standards-Version: 3.9.6
 Homepage: https://wiki.maliit.org
 Vcs-Browser: https://code.launchpad.net/~ubuntu-core-dev/maliit/maliit-framework-ubuntu
@@ -35,7 +34,7 @@ Breaks: gir1.2-maliit-1.0 (<< ${source:Version}),
         libmaliit-glib0 (<< ${source:Version}),
         libmaliit0 (<< ${source:Version}),
         maliit-dbus-activation (<< ${source:Version}),
-        maliit-inputcontext-qt4 (<< ${source:Version}),
+        maliit-inputcontext-qt4 (<< ${source:Version})
 Description: Maliit Input Method Framework
  Maliit provides a flexible and cross-platform input method framework. It has a
  plugin-based client-server architecture where applications act as clients and
@@ -47,8 +46,7 @@ Package: libmaliit-plugins0
 Architecture: any
 Breaks: maliit-framework (<< 0.99)
 Replaces: maliit-framework (<< 0.99)
-Depends: ${misc:Depends},
-         ${shlibs:Depends},
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Maliit Input Method Framework - Plugin Library
  Maliit provides a flexible and cross-platform input method framework. It has a
  plugin-based client-server architecture where applications act as clients and
@@ -105,7 +103,9 @@ Description: Maliit Input Method Framework - GLib Bindings
  This package provides GLib bindings for the Maliit framework.
 
 Package: libmaliit-glib-dev
-Depends: libmaliit-glib0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libmaliit-glib0 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Architecture: any
 Section: libdevel
 Description: Maliit Input Method Framework - GLib Development Headers
