@@ -1,5 +1,6 @@
 usr/bin/maliit-sdk
 usr/share/doc/maliit-framework
+usr/share/doc/maliit-framework-doc
 usr/share/doc/maliit-framework/*
 usr/share/gtk-doc/html/maliit
 usr/share/gtk-doc/html/maliit/*
