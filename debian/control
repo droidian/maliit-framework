@@ -6,6 +6,7 @@ XSBC-Original-Maintainer: Debian Mobile Team <debian-mobile@lists.debian.org>
 Uploaders: Michał Zając <quintasan@kubuntu.org>, Iain Lane <laney@debian.org>
 Build-Depends: cmake,
                debhelper (>= 9),
+               doxygen,
                libdbus-1-dev,
                libglib2.0-dev,
                libkf5wayland-dev,
