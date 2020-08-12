@@ -140,3 +140,10 @@ Architecture: all
 Section: oldlibs
 Description: transitional dummy package
  This is a transitional dummy package. It can safely be removed.
+
+Package: maliit-framework-doc
+Depends: maliit-framework, ${misc:Depends}
+Architecture: all
+Section: docs
+Description: docs for Maliit framework
+ Documentation for the framework of Maliit

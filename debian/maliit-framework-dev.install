@@ -1,4 +1,5 @@
 usr/include/maliit-2/maliit/
+usr/lib/*/cmake/MaliitPlugins/
 usr/lib/*/libmaliit-plugins.so
 usr/lib/*/pkgconfig/maliit-framework.pc
 usr/lib/*/pkgconfig/maliit-plugins.pc
