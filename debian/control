@@ -31,7 +31,7 @@ Vcs-Bzr: lp:~ubuntu-core-dev/maliit/maliit-framework-ubuntu
 
 Package: maliit-framework
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}, qml-module-qtquick-localstorage
 Recommends: maliit-inputmethod-plugin
 Breaks: gir1.2-maliit-1.0 (<< ${source:Version}),
         libmaliit-glib0 (<< ${source:Version}),
