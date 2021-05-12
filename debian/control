@@ -45,10 +45,10 @@ Description: Maliit Input Method Framework
  link currently uses D-Bus. Maliit is an open source framework (LGPL 2) with
  open source plugins (BSD).
 
-Package: libmaliit-plugins0
+Package: libmaliit-plugins2
 Architecture: any
-Breaks: maliit-framework (<< 0.99)
-Replaces: maliit-framework (<< 0.99)
+Breaks: maliit-framework (<< 0.99), libmaliit-plugins0 (<< ${source:Version}~ciBuild)
+Replaces: maliit-framework (<< 0.99), libmaliit-plugins0 (<< ${source:Version}~ciBuild)
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Maliit Input Method Framework - Plugin Library
  Maliit provides a flexible and cross-platform input method framework. It has a
@@ -92,10 +92,12 @@ Section: oldlibs
 Description: transitional dummy package
  This is a transitional dummy package. It can safely be removed.
 
-Package: libmaliit-glib0
+Package: libmaliit-glib2
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Section: libs
+Breaks: libmaliit-glib0 (<< ${source:Version}~ciBuild)
+Replaces: libmaliit-glib0 (<< ${source:Version}~ciBuild)
 Description: Maliit Input Method Framework - GLib Bindings
  Maliit provides a flexible and cross-platform input method framework. It has a
  plugin-based client-server architecture where applications act as clients and
@@ -106,7 +108,7 @@ Description: Maliit Input Method Framework - GLib Bindings
  This package provides GLib bindings for the Maliit framework.
 
 Package: libmaliit-glib-dev
-Depends: libmaliit-glib0 (= ${binary:Version}),
+Depends: libmaliit-glib2 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Architecture: any
