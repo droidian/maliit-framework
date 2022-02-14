@@ -1,2 +1,2 @@
 version=4
-https://github.com/maliit/framework/releases /maliit/framework/archive/refs/tags/(\d\S*).tar.gz
+https://github.com/maliit/framework/tags /maliit/framework/archive/refs/tags/(\d\S*).tar.gz
