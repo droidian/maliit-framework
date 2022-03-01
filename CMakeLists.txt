@@ -70,6 +70,7 @@ if(enable-wayland)
     find_package(WaylandProtocols REQUIRED PRIVATE)
     find_package(QtWaylandScanner REQUIRED)
     find_package(Wayland REQUIRED)
+    find_package(LayerShellQt REQUIRED PRIVATE)
     pkg_check_modules(XKBCOMMON REQUIRED IMPORTED_TARGET xkbcommon)
 endif()
 
@@ -136,7 +137,7 @@ endif()
 
 add_library(maliit-connection STATIC ${CONNECTION_SOURCES})
 target_link_libraries(maliit-connection
-    Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::DBus Qt${QT_VERSION_MAJOR}::Gui maliit-common)
+    Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::DBus Qt${QT_VERSION_MAJOR}::Gui maliit-common LayerShellQt::Interface)
 if(enable-wayland)
     target_link_libraries(maliit-connection Wayland::Client PkgConfig::XKBCOMMON)
 endif()
@@ -231,7 +232,6 @@ if(enable-wayland)
     list(APPEND PLUGINS_SOURCES
          src/waylandplatform.cpp
          src/waylandplatform.h)
-
 endif()
 
 if(enable-hwkeyboard)
