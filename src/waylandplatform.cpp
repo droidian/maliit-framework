@@ -16,7 +16,6 @@
 #include <QGuiApplication>
 #include <QRegion>
 #include <QWindow>
-#include <LayerShellQt/Window>
 
 #include "waylandplatform.h"
 #include "windowdata.h"
@@ -41,9 +40,9 @@ void WaylandPlatform::setupInputPanel(QWindow* window,
                                       Maliit::Position position)
 {
     if (qgetenv("QT_WAYLAND_SHELL_INTEGRATION") == QByteArray("layer-shell")) {
-        auto ls_window = Window::get(window);
-        ls_window->setDesiredOutput(QGuiApplication::primaryScreen());
-        ls_window->setLayer(Window::Layer::LayerOverlay);
+        m_lsWindow.reset(Window::get(window));
+        m_lsWindow.get()->setLayer(Window::Layer::LayerOverlay);
+        m_lsWindow.get()->setKeyboardInteractivity(Window::KeyboardInteractivity::KeyboardInteractivityNone);
         Window::Anchors anchors = Window::Anchor::AnchorBottom;
         switch (position) {
             case PositionLeftBottom: {
@@ -58,7 +57,7 @@ void WaylandPlatform::setupInputPanel(QWindow* window,
                 break;
             }
         }
-        ls_window->setAnchors(anchors);
+        m_lsWindow.get()->setAnchors(anchors);
     }
 }
 
@@ -70,6 +69,9 @@ void WaylandPlatform::setInputRegion(QWindow* window,
     }
 
     window->setMask(region);
+
+    if(!region.boundingRect().isNull())
+        m_lsWindow.get()->setExclusiveZone(region.boundingRect().height());
 }
 
 WaylandPlatform::~WaylandPlatform()

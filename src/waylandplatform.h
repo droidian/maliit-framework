@@ -14,6 +14,7 @@
 #define MALIIT_WAYLAND_PLATFORM_H
 
 #include <QScopedPointer>
+#include <LayerShellQt/Window>
 
 #include "abstractplatform.h"
 
@@ -37,6 +38,7 @@ public:
 
 private:
     QScopedPointer<WaylandPlatformPrivate> d_ptr;
+    QScopedPointer<LayerShellQt::Window> m_lsWindow;
 };
 
 } // namespace Maliit
