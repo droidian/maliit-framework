@@ -1,0 +1,47 @@
+From 16397d619a61b25545e6e33c298a0b263fba7bae Mon Sep 17 00:00:00 2001
+From: Ratchanan Srirattanamet <ratchanan@ubports.com>
+Date: Thu, 22 Aug 2024 11:23:09 +0000
+Subject: [PATCH] input-context: look for __inputMethodExtensions at the
+ parents too
+
+Look for `__inputMethodExtensions` custom property recursively upwards
+the parent tree. This is useful when a QQuickTextEdit is wrapped inside
+another QML component and application doesn't have access to the
+QQuickTextEdit itself.
+---
+ input-context/minputcontext.cpp | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
+
+--- a/input-context/minputcontext.cpp
++++ b/input-context/minputcontext.cpp
+@@ -847,12 +847,26 @@
+     if (!inputMethodAccepted()) {
+         return;
+     }
+-    if (!qGuiApp->focusObject()) {
+-        return;
+-    }
+     qCDebug(lcMaliit) << InputContextName << Q_FUNC_INFO;
+ 
+-    QVariantMap extensions = qGuiApp->focusObject()->property("__inputMethodExtensions").toMap();
++    QVariantMap extensions;
++
++    QObject *obj = qGuiApp->focusObject();
++    while (obj) {
++        QVariant property = obj->property("__inputMethodExtensions");
++        if (property.isValid()) {
++            extensions = property.toMap();
++            break;
++        }
++
++        /* Prefer QQuickItem visual parent over QObject parent. */
++        if (auto item = qobject_cast<QQuickItem *>(obj)) {
++            obj = item->parentItem();
++        } else {
++            obj = obj->parent();
++        }
++    }
++
+     QVariant value;
+     value = extensions.value("enterKeyIconSource");
+     imServer->setExtendedAttribute(0, "/keys", "actionKey", "icon", QVariant(value.toUrl().toString()));

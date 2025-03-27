@@ -1,0 +1,9 @@
+Document: maliit-framework-doc
+Title: Maliit Framework API Documentation
+Author: Nokia Corporation
+Abstract: This document describes the Maliit Framework API
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/maliit-framework/html/index.html
+Files: /usr/share/doc/maliit-framework/html/*

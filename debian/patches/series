@@ -1,0 +1,5 @@
+0001_move-the-operator==-definition-to-global-namespace.patch
+0002_prevent-qlist-returned-by-subject-pluginDescriptions-from-being-deleted.patch
+0003_fix-stack-smashing.patch
+0004_connection-Move-dbus-socket-to-well-known-path-in-XD.patch
+1001_input-context-look-for-inputMethodExtensions-at-the-parents-too.patch

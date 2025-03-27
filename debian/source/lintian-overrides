@@ -1,0 +1,3 @@
+# also, lintian does not catch the LICENSE.LGPL file as a file
+# that may be excluded from d/changelog
+source: file-without-copyright-information LICENSE.LGPL [debian/copyright]
