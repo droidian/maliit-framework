@@ -17,7 +17,7 @@ option(enable-qt-inputcontext "Compile with Qt input context" ON)
 
 option(enable-hwkeyboard "Enable support for the hardware keyboard" ON)
 option(enable-dbus-activation "Enable dbus activation support for maliit-server" OFF)
-option(BUILD_WITH_QT6 "Built with Qt 6 instead of Qt 5" OFF)
+option(BUILD_WITH_QT6 "Built with Qt 6 instead of Qt 5" ON)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
