@@ -1,4 +1,4 @@
-usr/include/maliit-2/maliit-glib/
-usr/lib/*/cmake/MaliitGLib
-usr/lib/*/libmaliit-glib.so
-usr/lib/*/pkgconfig/maliit-glib.pc
+usr/include/maliit6-2/maliit-glib/
+usr/lib/*/cmake/Maliit6GLib
+usr/lib/*/libmaliit6-glib.so
+usr/lib/*/pkgconfig/maliit6-glib.pc
