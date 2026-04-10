@@ -20,7 +20,7 @@ namespace QtWaylandClient
 class QWaylandInputPanelShellIntegrationPlugin: public QWaylandShellIntegrationPlugin
 {
 Q_OBJECT
-    Q_PLUGIN_METADATA(IID QWaylandShellIntegrationFactoryInterface_iid FILE "inputpanelshell.json")
+    Q_PLUGIN_METADATA(FILE "inputpanelshell.json")
 
 public:
     virtual QWaylandShellIntegration *create(const QString &key, const QStringList &paramList) override;
